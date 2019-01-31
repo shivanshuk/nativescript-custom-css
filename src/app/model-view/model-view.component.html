@@ -1,0 +1,38 @@
+<GridLayout rows="auto,*,auto">
+
+    <DockLayout row="0" id="actionBar" stretchLastChild="false" style="margin-top:1px;">
+        <Label dock="left" verticalAlignment="center" class="title-text-normal" text="App2Rate" style="margin-left:20px;"></Label>
+        <Image dock="right" verticalAlignment="center" src="~/assets/images/fa-user-white.png" width="30" height="30"
+            style="margin-right:20px;" (tap)="toggleClicked()"></Image>
+
+    </DockLayout>
+    <ScrollView row="1">
+        <StackLayout orientation="vertical">
+            <GridLayout columns="*,auto,auto" rows="auto,*,auto" id="profile" width="auto" height="100">
+                <GridLayout col="0" row="0" rowSpan="4" columns="*,*" rows="*,*" width="auto" height="100" class="m-30">
+                    <Label col="0" row="0" class="reader-title-text-normal" text="Reader Name"></Label>
+                    <Label col="1" row="0" class="reader-title-text-normal p-30" text="Rating"></Label>
+                    <Label col="0" row="1" class="reader-name" text="Alexander Hamilton" textTransform="capitalize"></Label>
+                    <Label col="1" row="1" class="reader-rating p-30" text="2" textTransform="capitalize"></Label>
+                </GridLayout>
+            </GridLayout>
+            <GridLayout>
+                <!-- <Label col="0" row="0" colspan="3" class="change-reading-text" text="Change to:"></Label> -->
+                <GridView [items]="items" width="100%" height="300" backgroundColor="lightgray" style="margin:20 0 0 0;"
+                    rowHeight="80">
+                    <ng-template let-item="item" let-i="index">
+                        <Button id="scoreBtn" class="btn" verticalAlignment="center" [text]="item.score" textWrap="true"
+                            [class.selected]="i===selectedIndex" (tap)="selectScore(i, selectedScore = item.score)"></Button>
+                    </ng-template>
+                    
+                </GridView>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <GridLayout row="2" columns="*,*">
+        <Button col="0" style="margin-left:55%;" (tap)="goBack()" class="btn cancel" id="cancelBtn" text="Cancel"></Button>
+    </GridLayout>
+
+
+</GridLayout>
